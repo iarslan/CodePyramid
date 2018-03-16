@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["Description"]" />
+    @*<meta name="google-site-verification" content="Yont-99Uej_07oIMbxGtrx6gmp-HuTElCfkHhPI0F98" />*@
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href='https://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet'>
+        @*<link rel="stylesheet" href="~/css/site.css" />
+            <link rel="stylesheet" href="~/css/responsiveads.css" />*@
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    </environment>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href='https://fonts.googleapis.com/css?family=Share+Tech' rel='stylesheet' />
+
+    <script src="https://use.fontawesome.com/a5e26c19e1.js"></script>
+
+
+</head>
+<body>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71453231-1"></script>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-header">
+            <img src="~/images/codePyramidLogo.jpeg" alt="Logo" title="logo" id="logo" />
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Code Pyramid</a>
+        </div>
+    </div>
+    <div class="flex-container">
+        @await Html.PartialAsync("_sidebar")
+        <div class="container body-content">
+            @RenderBody()
+            <input type="button" id="comicSansBtn" class="btn btn-primary" value="Toggle Comic Sans">
+        </div>
+    </div>
+    <footer class="container-fluid footer">
+        <p>&copy; 2018 - @DateTime.Now - Code Pyramid</p>
+    </footer>
+    <script src="~/js/displayComicSans.js"></script>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+    </environment>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bowser/1.9.1/bowser.min.js" integrity="sha256-sdvAigj5jeJatXP2oIfCG+eDnycTxLObaXQg+qIZZT4=" crossorigin="anonymous"></script>
+    <script src="~/js/utilities.js" asp-append-version="true"></script>
+
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Lesson 1 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/htmlcsslesson1quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+
+<h1>Quiz</h1>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. What is HTML short for?</p>
+        <ol>
+            <li id="q1c1">Hypertext Markup Language</li>
+            <li id="q1c2">Hypertext Making Language</li>
+            <li id="q1c3">Hypertime Making Language</li>
+            <li id="q1c4">Hypertime Markup Language</li>
+        </ol>
+        <p>2. What is CSS short for?</p>
+        <ol>
+            <li id="q2c1">Certain Style Section</li>
+            <li id="q2c2">Cascading Style Sheets</li>
+            <li id="q2c3">Certain Style Sheet</li>
+            <li id="q2c4">Cascading Style Section</li>
+        </ol>
+        <p>3. Is there a way to add style without CSS?</p>
+        <ol>
+            <li id="q3c1">Yes, but it’s rarely used.</li>
+            <li id="q3c2">Yes, and it’s commonly used.</li>
+            <li id="q3c3">No, but lots of coders wish there was.</li>
+            <li id="q3c4">No, and coders like it that way.</li>
+        </ol>
+        <p>4. What is CSS like in a house?</p>
+        <ol>
+            <li id="q4c1">The Foundation</li>
+            <li id="q4c2">Paint</li>
+            <li id="q4c3">Pipes and wiring</li>
+            <li id="q4c4">The front door</li>
+        </ol>
+        <p>5. What language is used to add functionality to websites?</p>
+        <ol>
+            <li id="q5c1">HTML</li>
+            <li id="q5c2">JavaScript</li>
+            <li id="q5c3">CSS</li>
+            <li id="q5c4">Java</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>HTML/CSS Lesson 1 Test</h2>
+        <h3>You got <span id="score"></span>/5 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson1p3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "JavaScript Lesson 1 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/jslesson1quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<h2>Lesson 1 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. JavaScript can only be used for web pages.</p>
+        <ol>
+            <li id="q1c1">True</li>
+            <li id="q1c2">False</li>
+        </ol>
+        <p>2. JavaScript code is written inside a CSS file when it’s used for web pages.</p>
+        <ol>
+            <li id="q2c1">True</li>
+            <li id="q2c2">False</li>
+        </ol>
+        <p>3. If a website was a house, JavaScript would be like:</p>
+        <ol>
+            <li id="q3c1">The Foundation</li>
+            <li id="q3c2">The Paint</li>
+            <li id="q3c3">The Pipes</li>
+            <li id="q3c4">JavaScript would be like none of these</li>
+        </ol>
+        <p>4. What year was JavaScript created?</p>
+        <ol>
+            <li id="q4c1">1987</li>
+            <li id="q4c2">1995</li>
+            <li id="q4c3">2005</li>
+            <li id="q4c4">2017</li>
+        </ol>
+        <p>5. JavaScript code written for purposes other than web pages will function the same way.</p>
+        <ol>
+            <li id="q5c1">True</li>
+            <li id="q5c2">False</li>
+            <li id="q5c3">JavaScript can only be used for web pages</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>JavaScript Lesson 1 Test</h2>
+        <h3>You got <span id="score"></span>/5 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson1p2"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

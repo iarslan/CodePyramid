@@ -1,0 +1,37 @@
+﻿
+<div class="sidebar">
+    <nav class="container-fluid no-right-padding no-left-padding" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="mobile-menu text-center">
+            <button id="mobileMenu">
+                <span>M E N U</span>
+            </button>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li class="top-padding-20">
+                    <a asp-controller="Home" asp-action="Index" itemprop="url"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i><span itemprop="name"> Home</span></a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="About" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> About</span></a>
+                </li>
+                <li>
+                    <a asp-controller="htmlcss" asp-action="Index" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> HTML/CSS</span></a>
+                </li>
+                <li>
+                    <a asp-controller="js" asp-action="Index" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> Javascript</span></a>
+                </li>
+                <li>
+                    <a asp-controller="Home" asp-action="Contact" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> Contact</span></a>
+                </li>
+                <li>
+                    <a asp-controller="Account" asp-action="Index" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> Login</span></a>
+                </li>
+                <li>
+                    <a asp-controller="Account" asp-action="Register" itemprop="url"><i class="fa fa-chevron-circle-right"></i><span itemprop="name"> Register</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div>
+

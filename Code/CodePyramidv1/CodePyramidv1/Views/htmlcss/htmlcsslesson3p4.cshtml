@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Lesson 3 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/htmlcsslesson3quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<h2>Lesson 3 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. Which tag is used to display images on a web page?</p>
+        <ol>
+            <li id="q1c1">&lt;p&gt;</li>
+            <li id="q1c2">&lt;img&gt;</li>
+            <li id="q1c3">&lt;a&gt;</li>
+            <li id="q1c4">&lt;!-- --&gt;</li>
+        </ol>
+        <p>2. Which tag is used to navigate to another web page?</p>
+        <ol>
+            <li id="q2c1">&lt;p&gt;</li>
+            <li id="q2c2">&lt;img&gt;</li>
+            <li id="q2c3">&lt;a&gt;</li>
+            <li id="q2c4">&lt;!-- --&gt;</li>
+        </ol>
+        <p>3. Which tag is used to leave a comment in your code?</p>
+        <ol>
+            <li id="q3c1">&lt;p&gt;</li>
+            <li id="q3c2">&lt;img&gt;</li>
+            <li id="q3c3">&lt;a&gt;</li>
+            <li id="q3c4">&lt;!-- --&gt;</li>
+        </ol>
+        <p>4. All tags in HTML have two parts, and cannot close themselves.</p>
+        <ol>
+            <li id="q4c1">True</li>
+            <li id="q4c2">False</li>
+        </ol>
+        <p>5. Tags cannot go inside of other tags.</p>
+        <ol>
+            <li id="q5c1">True</li>
+            <li id="q5c2">False</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>HTML/CSS Lesson 3 Test</h2>
+        <h3>You got <span id="score"></span>/5 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson3p3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>
+

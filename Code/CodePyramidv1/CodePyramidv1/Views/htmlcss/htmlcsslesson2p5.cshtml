@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Lesson 2 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/htmlcsslesson2quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<h2>Lesson 2 Quiz</h2>
+
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. Which tag do you use in HTML to change the name of the tab?</p>
+        <ol>
+            <li id="q1c1">&lt;p&gt;</li>
+            <li id="q1c2">&lt;title&gt;</li>
+            <li id="q1c3">&lt;head&gt;</li>
+            <li id="q1c4">&lt;body&gt;</li>
+        </ol>
+        <p>2. Which of these file names is NOT allowed to make your first webpage?</p>
+        <ol>
+            <li id="q2c1">home.htm</li>
+            <li id="q2c2">index.htm</li>
+            <li id="q2c3">default.htm</li>
+            <li id="q2c4">file.htm</li>
+        </ol>
+        <p>3. Which of these is NOT a commonly used text editor to write HTML code?</p>
+        <ol>
+            <li id="q3c1">Notepad++</li>
+            <li id="q3c2">Notepad</li>
+            <li id="q3c3">Atom</li>
+            <li id="q3c4">Sublime Text Editor</li>
+        </ol>
+        <p>
+            4. Which of these tags is used to provide additional information the the computer and won’t show up on the webpage?
+        </p>
+        <ol>
+            <li id="q4c1">&lt;p&gt;</li>
+            <li id="q4c2">&lt;title&gt;</li>
+            <li id="q4c3">&lt;head&gt;</li>
+            <li id="q4c4">&lt;body&gt;</li>
+        </ol>
+        <p>
+            5. Which of these tags is used to create a new paragraph on a web page?
+        </p>
+        <ol>
+            <li id="q5c1">&lt;p&gt;</li>
+            <li id="q5c2">&lt;title&gt;</li>
+            <li id="q5c3">&lt;head&gt;</li>
+            <li id="q5c4">&lt;body&gt;</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>HTML/CSS Lesson 2 Test</h2>
+        <h3>You got <span id="score"></span>/5 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson2p3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson2p5">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

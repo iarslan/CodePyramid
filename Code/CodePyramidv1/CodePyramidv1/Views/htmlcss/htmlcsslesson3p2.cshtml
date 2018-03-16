@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Examples of tags in HTML";
+}
+
+<h2>Examples of tags in HTML</h2>
+<p>
+    Before we go over a few different kinds of tags, it’s important to note how HTML files access other files.  Other files are referenced through tag in HTML, but in order for the file to be referenced, they must be in the same folder as the file trying to access them.  When building a website or programming in HTML, be sure to store all of your files in the same folder.
+
+    Now, let’s go over three different tags.
+</p>
+<p>&lt;-- !--&gt;</p>
+<p>
+    If you want to add information to your code that won’t display in the web page (such as notes for yourself) then you’ll want to use a comment tag.  A comment tag starts with &lt;!-- and ends with --&gt; .  Whatever goes between these two tags will not display on your web page, but will stay in your code for you to read.
+
+    Take a look at this example:
+</p>
+<img src="~/images/htmlpic19.png" />
+<p>
+    Notice that the comment appears in the code, but not on the web page.
+</p>
+<p>&lt;img&gt;</p>
+<p>
+    &lt;img&gt; tags are great for adding content to your web page.  They allow you to add different kinds of pictures, including .gif files.  &lt;img&gt; tags do not have a closing tag, so they’ll only be one line long.
+
+    Here’s an example of an &lt;img&gt; tag:
+</p>
+<img src="~/images/htmlpic20.png" />
+<img src="~/images/htmlpic21.png" />
+<p>
+    Don’t forget that you have to include the picture that you’re linking to in the same folder as your HTML document.  When entering in the name, be sure that the name you give the <img> tag is exactly the same as the name of your picture (including the extension).  Put the name of your file in the quotes for src, and put the name you want to appear if your picture doesn’t load in the quotes for alt.
+</p>
+<p>&lt;a&gt;</p>
+<p>
+    &lt;a&gt; tags are extremely important in HTML, and are used to navigate between web pages.  Whatever is placed between the &lt;a&gt;
+    tags will act as a link to whatever it’s set to reference.  Weather it’s text or an image, whatever is placed in between these tags will open the new web page.
+
+    Take a look at these examples:
+</p>
+<img src="~/images/htmlpic22.png" />
+<img src="~/images/htmlpic23.png" />
+<p>
+    Both of these are valid &lt;a&gt; tags.  Again, be sure that the file you’re trying to link to is in the same folder as your HTML document, and that you type the name exactly into the document.  Also, notice that in the first link the &lt;a&gt; tag surrounds an &lt;img&gt; tag so the picture is a link.  This is an example of nested tags.
+    In addition to linking to a page, you can also specify weather or not the page opens in a new tab.  Look at these examples to see how to control these options.
+</p>
+<img src="~/images/htmlpic24.png" />
+<p>
+    When the target attribute is set to self, it will open in the same tab and replace the current page.  When the target attribute is set to blank, it will open the page in a new tab.  Using &lt;a&gt;
+        tags is how you’ll link together pages on your web site, so these are very important!
+
+        If you want to find more tags in HTML there are plenty of resources online that have large lists of tags, such as this this website:
+</p>
+<a href="https://w3schools.com">w3schools website</a>
+<p>
+    We’ll continue to go over different kinds of tags later, but in the next lesson we’ll show you how to make HTML connect with a CSS file.
+</p>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson3p1"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson3p3">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>
