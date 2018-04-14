@@ -1,9 +1,44 @@
-﻿@{
+﻿@model CodePyramidv1.ViewModels.ContactViewModel
+
+@{
     ViewData["Title"] = "Contact";
 }
 <h2>@ViewData["Title"]</h2>
-<h3>@ViewData["Message"]</h3>
+<h3>Don't hesitate to contact the folks at CodePyramid with any questions.</h3>
 
-Contact the meme team.
+<h3>@ViewBag.Message</h3>
 
+<div>
+    You can use the email form below to send any questions or concerns.
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Contact">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Body" class="control-label"></label>
+<!--
+                <input asp-for="Body" class="form-control" size="80"  />
+-->
+                <textarea asp-for="Body" class="form-control" size="60" rows="6"></textarea>
+                <span asp-validation-for="Body" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Contact" class="btn btn-default" />
+            </div>
+
+        </form>
+    </div>
+</div>
 

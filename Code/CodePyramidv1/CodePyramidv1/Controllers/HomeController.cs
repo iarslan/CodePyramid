@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CodePyramidv1.Models;
 using CodePyramidv1.Data;
+using CodePyramidv1.ViewModels;
+using System.Net.Mail;
 
 namespace CodePyramidv1.Controllers
 {
@@ -18,17 +20,55 @@ namespace CodePyramidv1.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "C o d e P y r a m i d";
-
             return View();
+        }
+
+        public ActionResult MyAccount()
+        {
+            CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
+            ProgressAndAssessmentViewModel paavm = context.FetchProgressResults(); //right now, this populates the viewmodel with "dummy" username's progress.
+            return View(paavm);
         }
 
         public IActionResult Contact()
         {
             ViewData["Message"] = "Don't hesitate to contact the folks at CodePyramid with any questions.";
-
-            return View();
+            try
+            {
+                ViewBag.Message = TempData["result"].ToString();
+            }
+            catch(System.NullReferenceException)
+            {
+                ViewBag.Message = "";
+            }
+                    return View();
         }
+
+        [HttpPost]
+        public ActionResult Contact(ContactViewModel cvm)
+        {
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587)
+            {
+                    UseDefaultCredentials = false,
+                    Credentials = new System.Net.NetworkCredential("codepyramidhelp@gmail.com", "RiGL1kk87!Wkdnrwox104k21nf@95!48!"),
+                    //UseDefaultCredentials = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    
+                    EnableSsl = true
+                };
+            MailAddress from = new MailAddress("codepyramidhelp@gmail.com", cvm.Name);
+            MailAddress to = new MailAddress("codepyramidhelp@gmail.com", "CodePyramid");
+            MailMessage myMail = new System.Net.Mail.MailMessage(from, to);
+            myMail.Subject = cvm.Subject;
+            myMail.Body = cvm.Body;
+            myMail.BodyEncoding = System.Text.Encoding.UTF8;
+            myMail.IsBodyHtml = true;
+            smtpClient.Send(myMail);
+
+            TempData["result"] = "Successfuly sent. Thanks!";
+            return RedirectToAction("Contact");
+        }
+
         public IActionResult Courses()
         {
             ViewData["Message"] = "Courses at CodePyramid:";

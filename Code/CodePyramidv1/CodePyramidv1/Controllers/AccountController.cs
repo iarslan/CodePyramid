@@ -31,14 +31,15 @@ namespace CodePyramidv1.Controllers
         {
 
             CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
-             string name = context.GetLogonInfo(model.Username);
+            string name = context.GetLogonInfo(model);
+
             if (string.IsNullOrEmpty(name))
             {
                 //return View("NotAuthenticated");
-                return RedirectToAction("NotAuthenticated");
+                return RedirectToAction("LoginFailure");
             }
             //return View("Authenticated", name);
-            return RedirectToAction("Authenticated", "Account", new { model = model.Username });
+            return RedirectToAction("LoginSuccess", "Account", new { model = model.Username });
         }
 
         // GET: Account/Details/5
@@ -52,8 +53,33 @@ namespace CodePyramidv1.Controllers
         public ActionResult Register(RegisterViewModel model)
         {
             CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
-            context.RegisterUser(model);
-            return View(model);
+            int rowsAffected = context.RegisterUser(model);
+            if(rowsAffected == 0)
+            {
+                return RedirectToAction("RegistrationFailure");
+            }
+            return RedirectToAction("RegistrationSuccess");
+//            return View(model);
+        }
+
+        public ActionResult LoginSuccess()
+        {
+            return View();
+        }
+
+        public ActionResult LoginFailure()
+        {
+            return View();
+        }
+
+        public ActionResult RegistrationSuccess()
+        {
+            return View();
+        }
+
+        public ActionResult RegistrationFailure()
+        {
+            return View();
         }
 
         public ActionResult Authenticated(string model)
