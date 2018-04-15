@@ -8,6 +8,7 @@ using CodePyramidv1.Models;
 using CodePyramidv1.Data;
 using CodePyramidv1.ViewModels;
 using System.Net.Mail;
+using Microsoft.AspNetCore.Http;
 
 namespace CodePyramidv1.Controllers
 {
@@ -83,5 +84,26 @@ namespace CodePyramidv1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+
+        /*
+         *  THIS IS THE CODE WE CAN USE TO INTERACT WITH COOKIES
+         * 
+         *  CookieOptions option = new CookieOptions();
+            option.Expires = DateTime.Now.AddDays(1);
+            Response.Cookies.Append("key", "hello", option);
+
+            Response.Cookies.Delete("key");
+
+            var f = Request.Cookies["key"];
+
+         * 
+         * 
+         */ 
+
+
+
     }
 }

@@ -1,10 +1,10 @@
 ﻿using CodePyramidv1.ViewModels;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CodePyramidv1.Data
 {
@@ -43,9 +43,28 @@ namespace CodePyramidv1.Data
             return list;
         }
 
-        public ProgressAndAssessmentViewModel FetchProgressResults()
+
+
+            public ProgressAndAssessmentViewModel FetchProgressResults()
         {
             string uname = "dummy"; //for now, this is a hardcoded username. eventually, this will be replaced with the username stored in the cookie.
+
+            var v = new HttpContextAccessor().HttpContext.Request.Cookies["key"];
+
+            var a = new HttpContextAccessor();
+//            var q = a.HttpContext.Request.Cookies.Add();
+        //    Response.Cookies.Append
+
+
+
+//                .Request.Cookies["username"];
+
+            //            if (Request.Cookies["username"] == null)
+            //            {
+            //                CodePyramidContext.Request;
+            //            }
+
+
             ProgressAndAssessmentViewModel paavm = new ProgressAndAssessmentViewModel();
             using (MySqlConnection conn = GetConnection())
             {
