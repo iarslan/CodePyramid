@@ -43,11 +43,60 @@ namespace CodePyramidv1.Data
             return list;
         }
 
+        /*  QUICK CHEAT SHEET FOR THE ID'S ON LESSONS/QUIZZES
+         *   
+         *   COURSES
+         *   -------
+         *   (courseId)     (courseName)
+         *   1              "HTML/CSS"
+         *   2              "Javascript"
+         *   
+         *   
+         *   
+         *  SECTIONS
+         *  --------
+         *  (sectionId)     (sectionName)               (courseId)
+         *  1               "HTML/CSS Quiz One"         1 
+         *  2               "HTML/CSS Quiz Two"         1 
+         *  3               "HTML/CSS Quiz Three"       1 
+         *  4               "Javascript Quiz One"       2
+         *  5               "Javascript Quiz Two"       2
+         *  6               "Javascript Quiz Three"     2
+         *  7               "HTML/CSS Lesson 1"         1
+         *  8               "HTML/CSS Lesson 2"         1
+         *  9               "HTML/CSS Lesson 3"         1
+         *  10              "HTML/CSS Lesson 4"         1
+         *  11              "HTML/CSS Lesson 5"         1
+         *  12              "Javascript Lesson 1"       2
+         *  13              "Javascript Lesson 2"       2
+         *  14              "Javascript Lesson 3"       2
+         *  15              "Javascript Lesson 4"       2
+         *  16              "Javascript Lesson 5"       2
+         * 
+         */
+
+
+        public bool InsertAssessmentScore(String sectionName, String username, double p)
+        {
+            return false;
+        }
+
+        public bool InsertLessonCompletion(String sectionName, String username)
+        {
+            return false;
+        }
+
+
+
 
 
         public ProgressAndAssessmentViewModel FetchProgressResults(String uname)
         {
             ProgressAndAssessmentViewModel paavm = new ProgressAndAssessmentViewModel();
+
+            paavm.CompletedLessons = new List<string>();
+            paavm.AssessmentScores = new Dictionary<String, Int16>();
+
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
@@ -60,7 +109,7 @@ namespace CodePyramidv1.Data
         +   "ORDER BY u.username;", conn);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         paavm.CompletedLessons.Add(reader.GetString("Lesson"));
                     }
@@ -78,7 +127,7 @@ namespace CodePyramidv1.Data
         + "ORDER BY u.username;", conn);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         paavm.AssessmentScores.Add(reader.GetString("Assessment"), reader.GetInt16("Score"));
                     }
