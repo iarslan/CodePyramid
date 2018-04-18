@@ -12,37 +12,68 @@ namespace CodePyramidv1.Controllers
     public class AccountController : Controller
     {
 
-        
-        // GET: Account
         public ActionResult Index()
         {
             var model = new LoginViewModel();
             return View(model);
         }
+
+        public ActionResult Logout()
+        {
+            /*            //Destroy
+                        CookieOptions option = new CookieOptions
+                        {
+                            Expires = DateTime.Now.AddDays(-1)
+                        };
+                        Response.Cookies.Append("currentUser", "if_you_see_this_big_error_happened", option);
+
+            //            Response.Cookies.Delete("currentUser");
+
+            */
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
+
+            TempData["Message"] = "Logged Out! If you'd like, you can log in again below.";
+            return RedirectToAction("Login");
+        }
+
         public ActionResult Login()
         {
+            if (TempData["Message"] != null)
+            {
+                ViewBag.Message = TempData["Message"].ToString();
+            }
+            else
+            {
+                ViewBag.Message = "";
+            }
             var model = new LoginViewModel();
-            //            return RedirectToAction("Index");
             return View("Index", model);
         }
 
         [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
-
             CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
             string name = context.GetLogonInfo(model);
 
             if (string.IsNullOrEmpty(name))
             {
-                //return View("NotAuthenticated");
                 return RedirectToAction("LoginFailure");
             }
-            //return View("Authenticated", name);
+
+            //Create a username cookie with a 1 day duration
+            CookieOptions option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(1)
+            };
+            Response.Cookies.Append("currentUser", model.Username, option);
+
             return RedirectToAction("LoginSuccess", "Account", new { model = model.Username });
         }
 
-        // GET: Account/Details/5
         public ActionResult Register()
         {
             var model = new RegisterViewModel();
@@ -59,7 +90,6 @@ namespace CodePyramidv1.Controllers
                 return RedirectToAction("RegistrationFailure");
             }
             return RedirectToAction("RegistrationSuccess");
-//            return View(model);
         }
 
         public ActionResult LoginSuccess()

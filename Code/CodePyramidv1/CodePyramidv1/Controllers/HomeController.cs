@@ -8,12 +8,47 @@ using CodePyramidv1.Models;
 using CodePyramidv1.Data;
 using CodePyramidv1.ViewModels;
 using System.Net.Mail;
-using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http;
 
 namespace CodePyramidv1.Controllers
 {
     public class HomeController : Controller
     {
+
+        public ActionResult CookiesTestCreate()
+        {
+            //Create
+            CookieOptions option = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(1)
+            };
+            Response.Cookies.Append("currentUser", "dummy", option);
+
+            return View();
+        }
+
+        public ActionResult CookiesTestRetrieve()
+        {
+            //Retrieve
+            String q = Request.Cookies["currentUser"];
+            if( q != null ) 
+            {
+                ViewData["Message"] = "Found it: " + q;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult CookiesTestDestroy()
+        {
+            //Destroy
+            Response.Cookies.Delete("currentUser");
+            return View();
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -26,8 +61,15 @@ namespace CodePyramidv1.Controllers
 
         public ActionResult MyAccount()
         {
+            String uname = Request.Cookies["currentUser"];
+
+            if( uname == null )
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
-            ProgressAndAssessmentViewModel paavm = context.FetchProgressResults(); //right now, this populates the viewmodel with "dummy" username's progress.
+            ProgressAndAssessmentViewModel paavm = context.FetchProgressResults(uname);
             return View(paavm);
         }
 
@@ -84,10 +126,7 @@ namespace CodePyramidv1.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
-
-
+       
         /*
          *  THIS IS THE CODE WE CAN USE TO INTERACT WITH COOKIES
          * 
@@ -101,9 +140,24 @@ namespace CodePyramidv1.Controllers
 
          * 
          * 
-         */ 
+         */
 
+    /*  
+              
+    //Create
+    CookieOptions option = new CookieOptions
+    {
+        Expires = DateTime.Now.AddDays(1)
+    };
+    Response.Cookies.Append("key", "hello", option);
 
+    //Retrieve
+    var q = Request.Cookies["key"];
+
+    //Destroy
+    Response.Cookies.Delete("key");
+ 
+    */
 
     }
 }

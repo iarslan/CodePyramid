@@ -45,26 +45,8 @@ namespace CodePyramidv1.Data
 
 
 
-            public ProgressAndAssessmentViewModel FetchProgressResults()
+        public ProgressAndAssessmentViewModel FetchProgressResults(String uname)
         {
-            string uname = "dummy"; //for now, this is a hardcoded username. eventually, this will be replaced with the username stored in the cookie.
-
-            var v = new HttpContextAccessor().HttpContext.Request.Cookies["key"];
-
-            var a = new HttpContextAccessor();
-//            var q = a.HttpContext.Request.Cookies.Add();
-        //    Response.Cookies.Append
-
-
-
-//                .Request.Cookies["username"];
-
-            //            if (Request.Cookies["username"] == null)
-            //            {
-            //                CodePyramidContext.Request;
-            //            }
-
-
             ProgressAndAssessmentViewModel paavm = new ProgressAndAssessmentViewModel();
             using (MySqlConnection conn = GetConnection())
             {
@@ -128,6 +110,14 @@ namespace CodePyramidv1.Data
         }
         public int RegisterUser(RegisterViewModel model)
         {
+            if( ! model.Password.Equals(model.ConfirmPassword) )
+            {
+                return 0;
+            }
+            if( model.Password.Length < 6 || model.Password.Length > 100 )
+            {
+                return 0;
+            }
 
             string ph = Encoding.UTF8.GetString(System.Security.Cryptography.SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(model.Password)));
             int newId = 0;
