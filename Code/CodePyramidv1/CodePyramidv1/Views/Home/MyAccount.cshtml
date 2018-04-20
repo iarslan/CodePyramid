@@ -1,7 +1,7 @@
 ﻿@model CodePyramidv1.ViewModels.ProgressAndAssessmentViewModel
-<h2>Under Construction.</h2>
+<h2>My Account</h2>
 
-<h3>lessons:</h3>
+<h3>Lesson Progress:</h3>
 <ul>
 
     @try
@@ -13,7 +13,7 @@
             </li>
         }
     }
-    catch(Exception e)
+    catch(Exception)
     {
         <li>
             Looks like you haven't completed any lessons!
@@ -22,18 +22,18 @@
 
 </ul>
 
-<h3>scores:</h3>
+<h3>Quiz Scores:</h3>
 <ul>
     @try
     {
         @foreach (KeyValuePair<string, Int16> entry in Model.AssessmentScores)
         {
             <li>
-                @entry.Key , @entry.Value
+                @entry.Key: @entry.Value%
             </li>
         }
     }
-    catch (Exception e)
+    catch (Exception)
     {
         <li>
             Looks like you haven't completed any assessments!
@@ -41,9 +41,3 @@
     }
 </ul>
 
-@*
-    TODO: make an HTML page that spits out the lesson progress and assessment scores of the user
-
-    Take a look at the "Progress and Assessment" viewmodel.
-    There is a helpful function in Data/CodePyramidContext.csthml that should help populate it with data.
-*@

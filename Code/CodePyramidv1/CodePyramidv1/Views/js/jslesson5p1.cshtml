@@ -1,12 +1,32 @@
 ﻿
 @{
-    ViewData["Title"] = "jslesson5p1";
+    ViewData["Title"] = "Conditional Statements - if/else";
 }
 
-<h2>jslesson5p1</h2>
+<h2>Conditional Statements - if/else</h2>
+
+<p>
+    if/else statements in JavaScript are extremely important, and they’re used in almost all pieces of JavaScript code written. This is what an if/else statement looks like:
+</p>
+<img src="~/images/js18.png" />
+
+<p>
+    If the statement in the parentheses of the if statement are true, then it will run the code between the curly braces for the if part.  If the statement is false, it will run the code in the else’s set of curly braces.  If there is no else section and the statement is false, then nothing happens.  If there is no else section but the if statement is true, then it will still run its code.
+
+    Here’s an example of an if/else statement and what each part does:
+</p>
+<img src="~/images/js19.png" />
+
+<p>
+    Else if statements in JavaScript are less common, but can also be very useful.  Else if statements will check multiple conditions in order to see if they’re true.  If one of them is true, then it will execute the code for that statement and ignore the rest of them.  The else if statements will check in order from top to bottom, so if the first statement is correct the rest of the statements don’t even get checked.  If none of the else if statements are true, then the else statement’s code is run.
+</p>
+
 
 <div class="row">
     <div class="col-xs-6 col-md-10">
-        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="js" asp-action="index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="Index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson5p2">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 </div>

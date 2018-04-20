@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "JavaScript Lesson 5 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/jslesson5quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<form asp-action="assessmentSubmission" id="jsquiz5form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
+<h2>Lesson 5 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. If the conditional statement in an if/else statement is false, what happens?</p>
+        <ol>
+            <li id="q1c1">The program closes.</li>
+            <li id="q1c2">The block of code under the if is executed, but not the block of code under the else</li>
+            <li id="q1c3">The block of code under the else is executed, but not the block of code under the if</li>
+            <li id="q1c4">The block of code under the if is executed and the block of code under the else is executed</li>
+        </ol>
+        <p>2. Which of these is fastest?</p>
+        <ol>
+            <li id="q2c1">if/else statements</li>
+            <li id="q2c2">else if statements</li>
+            <li id="q2c3">switch statements</li>
+            <li id="q2c4">They are all the same speed</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>JavaScript Lesson 5 Test</h2>
+        <h3>You got <span id="score"></span>/2 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson5p2"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="Index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

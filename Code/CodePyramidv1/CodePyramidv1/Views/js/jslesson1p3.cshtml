@@ -8,6 +8,11 @@
     <script src="~/js/html2canvas.js"></script>
 }
 
+<form asp-action="assessmentSubmission" id="jsquiz1form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
 <h2>Lesson 1 Quiz</h2>
 <p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
 <div class="panel panel-default">

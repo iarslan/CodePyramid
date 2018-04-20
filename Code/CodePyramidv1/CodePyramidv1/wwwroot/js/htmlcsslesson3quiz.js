@@ -183,6 +183,12 @@
             missed.innerText = missedString;
         }
 
+        document.getElementById("percentScore").value = ((100 / 5) * scoreNum).toString();
+        document.getElementById("assessmentName").value = "HTML/CSS Quiz 3";
+
+        document.getElementById("htmlquiz3form").submit();
+
+
     }
 
     function init() {

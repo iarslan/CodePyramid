@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "JavaScript Lesson 2 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/jslesson2quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<form asp-action="assessmentSubmission" id="jsquiz2form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
+<h2>Lesson 2 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. What tags should you put your Javascript code between?</p>
+        <ol>
+            <li id="q1c1">&lt;script&gt; and &lt;/script&gt;</li>
+            <li id="q1c2">&lt;a&gt; and &lt;/a&gt;</li>
+            <li id="q1c3">&lt;h1&gt; and &lt;/h1&gt;</li>
+            <li id="q1c4">&lt;p&gt; and &lt;/p&gt;</li>
+        </ol>
+        <p>2. JavaScript code is written inside a HTML file when it’s used for web pages.</p>
+        <ol>
+            <li id="q2c1">True</li>
+            <li id="q2c2">False</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>JavaScript Lesson 2 Test</h2>
+        <h3>You got <span id="score"></span>/2 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson2p4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

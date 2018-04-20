@@ -423,3 +423,7 @@ img {
     margin-top: 30% !important;
 }
 
+#resultBox {
+    border: 2px solid black;
+    height: 400px;
+}

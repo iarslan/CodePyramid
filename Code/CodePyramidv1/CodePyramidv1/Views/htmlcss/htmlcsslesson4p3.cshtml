@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "HTML/CSS Lesson 4 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/htmlcsslesson4quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<form asp-action="assessmentSubmission" id="htmlquiz4form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
+<h2>Lesson 4 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. What does CSS stand for?</p>
+        <ol>
+            <li id="q1c1">Cascading Style Sheets</li>
+            <li id="q1c2">Cool Style Sheets</li>
+            <li id="q1c3">Cascading String Sheets</li>
+            <li id="q1c4">Crazy Stinging Sheets</li>
+        </ol>
+        <p>2. What tag should you use to link an HTML document to a Cascading Style Sheet?</p>
+        <ol>
+            <li id="q2c1">&lt;a&gt;</li>
+            <li id="q2c2">&lt;p&gt;</li>
+            <li id="q2c3">&lt;link&gt;</li>
+            <li id="q2c4">&lt;head&gt;</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>HTML/CSS Lesson 4 Test</h2>
+        <h3>You got <span id="score"></span>/2 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson4p2"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

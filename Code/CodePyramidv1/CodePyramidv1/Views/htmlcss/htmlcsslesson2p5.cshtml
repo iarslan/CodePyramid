@@ -8,6 +8,12 @@
     <script src="~/js/html2canvas.js"></script>
 }
 
+<form asp-action="assessmentSubmission" id="htmlquiz2form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
+
 <h2>Lesson 2 Quiz</h2>
 
 <p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
@@ -71,9 +77,9 @@
 
 <div class="row">
     <div class="col-xs-6 col-md-10">
-        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson2p3"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson2p4"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
     </div>
     <div class="col-xs-6 col-md-2">
-        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson2p5">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 </div>

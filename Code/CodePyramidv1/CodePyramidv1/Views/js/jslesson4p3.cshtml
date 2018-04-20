@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "JavaScript Lesson 4 Quiz";
+}
+
+@section Scripts {
+    <script src="~/js/jslesson4quiz.js"></script>
+    <script src="~/js/html2canvas.js"></script>
+}
+
+<form asp-action="assessmentSubmission" id="jsquiz4form" method="post">
+    <input type="hidden" name="percentScore" id="percentScore" />
+    <input type="hidden" name="assessmentName" id="assessmentName" />
+</form>
+
+<h2>Lesson 4 Quiz</h2>
+<p>Click on one answer per question. Then click the submit button at the bottom of the page to grade your answers</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"></h3>
+    </div>
+    <div class="panel-body" id="questions">
+        <p>1. Which one of these operators stands for "not equal" in JavaScript?</p>
+        <ol>
+            <li id="q1c1">==</li>
+            <li id="q1c2">=/=</li>
+            <li id="q1c3">!=</li>
+            <li id="q1c4">!</li>
+        </ol>
+        <p>2. What is the truth value of the statement 4 == 3?</p>
+        <ol>
+            <li id="q2c1">True</li>
+            <li id="q2c2">False</li>
+            <li id="q2c3">This is not a comparison statement, this is an assignment statement. Neither true nor false</li>
+            <li id="q2c4">You cannot compare numbers in JavaScript. Neither true nor false.</li>
+        </ol>
+        <div class="row">
+            <div class="col-sm-2">
+                <input type="button" id="btnSubmit" class="btn btn-danger btn-lg" value="Submit" />
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" id="results" style="display: none;">
+        <h2>JavaScript Lesson 4 Test</h2>
+        <h3>You got <span id="score"></span>/2 correct</h3>
+        <h3>Question numbers missed: <span id="missed"></span></h3>
+        <input type="button" id="btnPrint" class="btn btn-success btn-lg" value="Print" onclick="print()" />
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-6 col-md-10">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson4p2"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="Index">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>

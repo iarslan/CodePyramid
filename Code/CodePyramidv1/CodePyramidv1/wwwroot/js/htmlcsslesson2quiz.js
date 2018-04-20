@@ -223,6 +223,12 @@
             missed.innerText = missedString;
         }
 
+        document.getElementById("percentScore").value = ((100 / 5) * scoreNum).toString();
+        document.getElementById("assessmentName").value = "HTML/CSS Quiz 2";
+
+        document.getElementById("htmlquiz2form").submit();
+
+
     }
 
     function init() {

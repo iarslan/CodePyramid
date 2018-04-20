@@ -43,59 +43,192 @@ namespace CodePyramidv1.Data
             return list;
         }
 
-        /*  QUICK CHEAT SHEET FOR THE ID'S ON LESSONS/QUIZZES
-         *   
-         *   COURSES
-         *   -------
-         *   (courseId)     (courseName)
-         *   1              "HTML/CSS"
-         *   2              "Javascript"
-         *   
-         *   
-         *   
-         *  SECTIONS
-         *  --------
-         *  (sectionId)     (sectionName)               (courseId)
-         *  1               "HTML/CSS Quiz One"         1 
-         *  2               "HTML/CSS Quiz Two"         1 
-         *  3               "HTML/CSS Quiz Three"       1 
-         *  4               "Javascript Quiz One"       2
-         *  5               "Javascript Quiz Two"       2
-         *  6               "Javascript Quiz Three"     2
-         *  7               "HTML/CSS Lesson 1"         1
-         *  8               "HTML/CSS Lesson 2"         1
-         *  9               "HTML/CSS Lesson 3"         1
-         *  10              "HTML/CSS Lesson 4"         1
-         *  11              "HTML/CSS Lesson 5"         1
-         *  12              "Javascript Lesson 1"       2
-         *  13              "Javascript Lesson 2"       2
-         *  14              "Javascript Lesson 3"       2
-         *  15              "Javascript Lesson 4"       2
-         *  16              "Javascript Lesson 5"       2
-         * 
-         */
-
-
-        public bool InsertAssessmentScore(String sectionName, String username, double p)
+        public int InsertAssessmentScore(String sectionName, String username, Int16 score)
         {
-            return false;
+            int sectionId = 0;
+            int userId = 0;
+
+            //The sectionId's of the various quizzes are known, so we can just use a switch statement. No query needed. 
+            switch (sectionName)
+            {
+                case "HTML/CSS Quiz 1":
+                    sectionId = 11;
+                    break;
+                case "HTML/CSS Quiz 2":
+                    sectionId = 12;
+                    break;
+                case "HTML/CSS Quiz 3":
+                    sectionId = 13;
+                    break;
+                case "HTML/CSS Quiz 4":
+                    sectionId = 14;
+                    break;
+                case "HTML/CSS Quiz 5":
+                    sectionId = 15;
+                    break;
+                case "Javascript Quiz 1":
+                    sectionId = 16;
+                    break;
+                case "Javascript Quiz 2":
+                    sectionId = 17;
+                    break;
+                case "Javascript Quiz 3":
+                    sectionId = 18;
+                    break;
+                case "Javascript Quiz 4":
+                    sectionId = 19;
+                    break;
+                case "Javascript Quiz 5":
+                    sectionId = 20;
+                    break;
+                default:
+                    break;
+            }
+
+            if( sectionId == 0 )
+            {
+                //This means you didn't enter a valid quiz name. 
+                return 1;
+            }
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select userId from `User` where username = '" + username + "';", conn); 
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        //Grab the relevant userId to use in our insert command. 
+                        userId = reader.GetInt32("userId");
+//                        userId = reader.GetInt64("userId");
+                    }
+                    else
+                    {
+                        //This means the username we searched for isn't in the database.
+                        //We can't insert for a user that doesn't exist, so we must quit. 
+                        return 2;
+                    }
+                }
+            }
+
+            using (MySqlConnection conn = GetConnection())
+            {
+//                MySqlCommand cmd = new MySqlCommand("insert into `Grade` (score, userId, sectionId) "
+ //                   + "values (" + score + ", " + userId + ", " + sectionId + ");", conn);
+                MySqlCommand cmd = new MySqlCommand("insert into `Grade` (score, userId, sectionId) "
+                    + "values (" + score + ", " + userId + ", " + sectionId + ") "
+                    + "on duplicate key update score = " + score + ";", conn);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    //This means the insertion failed. We'll return false to inform. 
+                    return 3;
+                }
+            }
+
+            return 0;
         }
 
-        public bool InsertLessonCompletion(String sectionName, String username)
+        public int InsertLessonCompletion(String sectionName, String username)
         {
-            return false;
+            int sectionId = 0;
+            int userId = 0;
+
+            //The sectionId's of the various lessons are known, so we can just use a switch statement. No query needed. 
+            switch (sectionName)
+            {
+                case "HTML/CSS Lesson 1":
+                    sectionId = 1;
+                    break;
+                case "HTML/CSS Lesson 2":
+                    sectionId = 2;
+                    break;
+                case "HTML/CSS Lesson 3":
+                    sectionId = 3;
+                    break;
+                case "HTML/CSS Lesson 4":
+                    sectionId = 4;
+                    break;
+                case "HTML/CSS Lesson 5":
+                    sectionId = 5;
+                    break;
+                case "Javascript Lesson 1":
+                    sectionId = 6;
+                    break;
+                case "Javascript Lesson 2":
+                    sectionId = 7;
+                    break;
+                case "Javascript Lesson 3":
+                    sectionId = 8;
+                    break;
+                case "Javascript Lesson 4":
+                    sectionId = 9;
+                    break;
+                case "Javascript Lesson 5":
+                    sectionId = 10;
+                    break;
+                default:
+                    break;
+            }
+
+            if( sectionId == 0)
+            {
+                //This means you didn't enter a valid lesson name
+                return 1;
+            }
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("select userId from `User` where username = '" + username + "';", conn);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        //Grab the relevant userId to use in our insert command. 
+                        userId = reader.GetInt16("userId");
+                    }
+                    else
+                    {
+                        //This means the username we searched for isn't in the database.
+                        //We can't insert for a user that doesn't exist, so we must quit. 
+                        return 2;
+                    }
+                }
+            }
+
+            using (MySqlConnection conn = GetConnection())
+            {
+                MySqlCommand cmd = new MySqlCommand("insert into `Completion` (userId, sectionId) "
+                    + "values (" + userId + ", " + sectionId + ");", conn);
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    //This means the insertion failed. We'll return false to inform. 
+                    return 3;
+                }
+            }
+
+            return 0;
         }
-
-
-
-
 
         public ProgressAndAssessmentViewModel FetchProgressResults(String uname)
         {
-            ProgressAndAssessmentViewModel paavm = new ProgressAndAssessmentViewModel();
-
-            paavm.CompletedLessons = new List<string>();
-            paavm.AssessmentScores = new Dictionary<String, Int16>();
+            ProgressAndAssessmentViewModel paavm = new ProgressAndAssessmentViewModel
+            {
+                CompletedLessons = new List<string>(),
+                AssessmentScores = new Dictionary<String, Int16>()
+            };
 
             using (MySqlConnection conn = GetConnection())
             {
@@ -129,7 +262,14 @@ namespace CodePyramidv1.Data
                 {
                     while (reader.Read())
                     {
-                        paavm.AssessmentScores.Add(reader.GetString("Assessment"), reader.GetInt16("Score"));
+                        try
+                        {
+                            paavm.AssessmentScores.Add(reader.GetString("Assessment"), reader.GetInt16("Score"));
+                        }
+                        catch (Exception)
+                        {
+                            //this means there's a duplicate entry. just go to next.
+                        }
                     }
                 }
             }

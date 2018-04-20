@@ -1,12 +1,39 @@
 ﻿
 @{
-    ViewData["Title"] = "jslesson3p1";
+    ViewData["Title"] = "Variables in JavaScript";
 }
 
-<h2>jslesson3p1</h2>
+<h2>Variables in JavaScript</h2>
+
+<p>
+    Variables are extremely important in programming since they allow you to hold information so that you can use it.  Think of a variable as a box, and you can put different things in them to use later.  JavaScript is a loosely typed language, which means that you don’t tell the language what kind of information you’re going to store in a variable.  This means that any kind of information can be stored in a variable.  In some other languages, you have to let the computer know if you want to store a number, or a string (a string is a list of characters, which can be letters, numbers, or symbols).
+
+    To create a variable, you use the var keyword.  Follow this pattern below in order to create a variable:
+</p>
+
+<img src="~/images/js8.png" />
+
+<p>
+    If you want to change what a variable is later, you don’t have to use the var keyword, you just re-assign the variable like this:
+</p>
+
+<img src="~/images/js9.png" />
+
+<p>
+    Sometimes you want to decide what your variable should be after you write your program.  In this case, you ask the person running the program to decide what the variable should be when they run it.  To do this, you have to create a way for them to enter in their information.  You do this in JavaScript with a prompt.
+</p>
+
+<p>
+    After somebody types what they want into the box and sends it to the computer, the computer assigns that information to the variable you set the prompt for.
+</p>
+
+
 
 <div class="row">
     <div class="col-xs-6 col-md-10">
-        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="js" asp-action="index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="Index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
+    </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-controller="js" asp-action="jslesson3p2">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 </div>

@@ -1,13 +1,60 @@
 ﻿
 @{
-    ViewData["Title"] = "htmlcsslesson5p1";
+    ViewData["Title"] = "Your First CSS Code";
 }
 
-<h2>htmlcsslesson5p1</h2>
+<h2>Your First CSS Code</h2>
+<p>
+    Before we get started writing CSS code, it’s important to know how colors work in CSS.  There are a few different ways for you to tell the computer which color that you want to use.  You can just type the name of a color in English when specifying the color, but this doesn’t work for most colors and you can’t get the exact color that you want.  Usually, you’ll want to either give the computer a hex value (short for hexadecimal value) or and RGB value (short for Red-Blue-Green value).
+</p>
+
+<p>
+    RGB and hex values look like this: rgb(34,253,201) and #AA1111
+</p>
+
+<p>
+    Hex values and RGB values can both represent any color that the computer can display, and you can get as creative with your color mixes as you want!  In our code we’re going to use RGB values.  RGB values are three numbers that correspond to the amount of red, blue, and green in a color on a scale from 0 to 255.  Once you understand how RGB and hex values work you can change them without using a color value generator, but we’re going to use one in these exercises.
+</p>
+
+<p>
+    Here’s the link to a color value generator:https://www.w3schools.com/colors/colors_picker.asp
+    There are tons of these online, we just selected this one at random.  Feel free to use any color generator that you like.
+</p>
+
+<p>
+    Now that you understand how to select colors, let’s show you how to use them!  We’re going to be making changes to the &lt;body&gt;
+    tags and the &lt;p&gt;
+    tags, but you can follow these patterns to change any tag that you want.  We’re going to be changing the text color and size, as well as changing the background color and making the background a picture.  In the next lesson we’ll also show you how to do more complex things with CSS, but these elements are a good start.
+
+    In order to change text color, name the element “color” followed by a colon then your color and finally a semicolon.
+    Here’s what changing the color of text looks like in CSS:
+</p>
+<img src="~/images/css2.png" />
+<p>
+    The code for changing the color to any other is exactly the same, except you change the numbers for the RGB value.  When you have elements in CSS that both change the same thing, the code that is the most nested in the HTML will override the other codes.  Another way to think about it is the more specific you are in which tag that you assign a value to, the more power it will have to override other values from other tags. In addition, if there isn’t a value given in the more nested tags, the outermost tag in the HTML code with a value for the element will be used.
+</p>
+<p>
+    For example, in this code the
+    &lt;p&gt;
+    tag is inside of the &lt;body&gt;
+    tag, so the value for text color in body is beaten out by the code that changes the text color in the
+    &lt;p&gt;
+    tag.
+</p>
+<img src="~/images/css3.png" />
+<p>
+    The phrase “Hello!” will be the color defined for &lt;body&gt;
+    , but the phrase “I’m a paragraph!” will be in the color defined for
+    &lt;p&gt;
+    tags
+</p>
+
 
 <div class="row">
     <div class="col-xs-6 col-md-10">
         <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
     </div>
+    <div class="col-xs-6 col-md-2">
+        <a class="btn btn-success btn-primary-spacing app-brand" asp-area="" asp-controller="htmlcss" asp-action="htmlcsslesson5p2">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
 </div>
-

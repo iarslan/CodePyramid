@@ -49,9 +49,19 @@ namespace CodePyramidv1.Controllers
             return View();
         }
 
-        public IActionResult Index()
-        {
-            return View();
+        public IActionResult Index() {
+
+            ViewBag.Message = "FFF";
+            String uname = Request.Cookies["currentUser"];
+            if (uname == null)
+            {
+                ViewBag.Greeting = "Learn How To Code For Free";
+            }
+            else
+            {
+                ViewBag.Greeting = "Welcome, " + uname + "!";
+            }
+            return View(ViewBag);
         }
 
         public IActionResult About()
@@ -70,6 +80,7 @@ namespace CodePyramidv1.Controllers
 
             CodePyramidContext context = HttpContext.RequestServices.GetService(typeof(CodePyramidContext)) as CodePyramidContext;
             ProgressAndAssessmentViewModel paavm = context.FetchProgressResults(uname);
+            paavm.CompletedLessons.Sort();
             return View(paavm);
         }
 

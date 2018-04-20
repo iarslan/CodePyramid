@@ -167,6 +167,12 @@
             missed.innerText = missedString;
         }
 
+        document.getElementById("percentScore").value = ((100 / 5) * scoreNum).toString();
+        document.getElementById("assessmentName").value = "Javascript Quiz 1";
+
+        document.getElementById("jsquiz1form").submit();
+
+
     }
 
     function init() {
